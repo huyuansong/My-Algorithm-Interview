@@ -21,7 +21,7 @@ import java.util.HashMap;
  * 暴力的方法是三重循环，计算量达到了 10^9 以上太多，不是很合适。优化：将距离相同的点的个数存储在 Map 中
  * 计算距离是很消耗 cpu 的，我们不如把所有可能的点全部加入到查找表中，用空间换时间
  * 因为需要求： 平面上所有回旋镖的数量，还需要考虑元组顺序，那么就是一个排列问题。
- * 所以：只需要求 i和j 之间有多少个不同的距离就可以了，然后计算排列数
+ * 所以：只需要求 i和j 之间相同的距离有多少个点，然后计算排列数
  */
 // 时间复杂度: O(n^2)
 // 空间复杂度: O(n)
@@ -31,7 +31,7 @@ public class Solution {
 
         int res = 0;
         for( int i = 0 ; i < points.length ; i ++ ){
-            // record中存储 点i 到所有其他点 j 的距离出现的频次 , Map<距离大小,点的个数>
+            // record中存储 点i 到所有其他点 j 的距离出现的频次 , Map<距离数字,点的个数>
             // 以 i 为枢纽点，每次的距离都对应不同的 Map，因此，这个 Map 要写在 for 循环中
             HashMap<Integer, Integer> record = new HashMap<Integer, Integer>();
 

@@ -34,14 +34,14 @@ public class Solution {
             // ceiling(i) 返回比 i 大的最小元素，常常用在判断误差的场景
             // 在向查找表添加新元素之前，先写清楚退出条件：record中存在误差范围内的值
             if(record.ceiling(nums[i] - t) != null &&
-                    record.ceiling(nums[i] - t) <= nums[i] + t )
+                    record.ceiling(nums[i] - t) <= nums[i] + t ) // 因为 abs(nums[i] - nums[j]) <= t
             return true;
 
-            record.add(nums[i]); // 向查找表中添加值
+            record.add(nums[i]); // 向查找表中添加值，加入缓存
 
-            if(record.size() == k + 1) // 维护一个 滑动窗口 的索引范围
+            if(record.size() == k + 1) // 维护一个 滑动窗口 的索引范围 （缓存大小）
                 // 这里借用数组的有序性，而无需要求查找表 record 有序，只把元素从查找表移除就行
-                record.remove(nums[i-k]);
+                record.remove(nums[i-k]); //（从缓存中逐出元素）
         }
 
         return false;

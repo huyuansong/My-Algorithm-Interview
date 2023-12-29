@@ -29,7 +29,7 @@ public class Solution {
             // 这种写法在很多地方都有，递归中也有类似的思想
             if(record.contains(nums[i]))
                 return true;
-            record.add(nums[i]); // 能执行到这，已经不包含了，所以加入查找表
+            record.add(nums[i]); // 能执行到这，已经不包含了，所以加入查找表（缓存）
 
             // 循环内部，这里维护一个 k 长的滑动窗口
             if(record.size() == k + 1)

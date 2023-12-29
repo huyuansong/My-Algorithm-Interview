@@ -23,7 +23,7 @@ public class Solution3 {
 
             if(r + 1 < nums.length && sum < s) // 因为下面 r 要右移(++r),所以这里要保证(r+1有意义)
                 sum += nums[++r];
-            else // r已经到头 或者 sum >= s
+            else //  r已经到头 , 还是无法 sum>=s,只能 l 向前移动
                 sum -= nums[l++];
 
             if(sum >= s)
